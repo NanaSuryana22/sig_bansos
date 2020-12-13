@@ -14,7 +14,9 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $role_user = Role::where('name', 'masyarakat')->first();
-        $role_admin = Role::where('name', 'admin')->first();
+        $role_dinas_sosial = Role::where('name', 'dinas_sosial')->first();
+        $role_kecamatan = Role::where('name', 'kecamatan')->first();
+        $role_desa = Role::where('name', 'desa')->first();
 
         $masyarakat = new User();
         $masyarakat->name = 'Masyarakat';
@@ -23,11 +25,25 @@ class UserTableSeeder extends Seeder
         $masyarakat->save();
         $masyarakat->roles()->attach($role_user);
 
-        $admin = new User();
-        $admin->name = 'Admin';
-        $admin->email = 'admin@gmail.com';
-        $admin->password = bcrypt('admin123');
-        $admin->save();
-        $admin->roles()->attach($role_admin);
+        $dinas_sosial = new User();
+        $dinas_sosial->name = 'Petugas Dinas Sosial';
+        $dinas_sosial->email = 'dinas_sosial@mail.com';
+        $dinas_sosial->password = bcrypt('dinassosial123');
+        $dinas_sosial->save();
+        $dinas_sosial->roles()->attach($role_dinas_sosial);
+
+        $kecamatan = new User();
+        $kecamatan->name = 'Petugas Kecamatan';
+        $kecamatan->email = 'kecamatan@mail.com';
+        $kecamatan->password = bcrypt('kecamatan123');
+        $kecamatan->save();
+        $kecamatan->roles()->attach($role_kecamatan);
+
+        $desa = new User();
+        $desa->name = 'Petugas Desa';
+        $desa->email = 'desa@mail.com';
+        $desa->password = bcrypt('desa123');
+        $desa->save();
+        $desa->roles()->attach($role_desa);
     }
 }

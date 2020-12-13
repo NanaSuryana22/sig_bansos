@@ -4,23 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-Use App\Role;
+use App\Role;
 use Session;
 use Auth;
+use DB;
 
 class UserController extends Controller
 {
     public function __construct() {
         $this->middleware('auth');
-        $this->middleware('role:admin');
+        $this->middleware('role:dinas_sosial');
     }
 
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['admin']);
+        $request->user()->authorizeRoles(['dinas_sosial']);
 
         $users = User::all();
-        return view('users.index')->with('users', $users);
+        return view('user.index')->with('users', $users);
     }
 
     public function create()
@@ -45,13 +46,15 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.show')->with('user', $user);
+        $role = Role::find($user->id);
+        return view('users.show')->with('user', $user)->with('role', $role);
     }
 
     public function edit($id)
     {
         $user = User::find($id);
-        return view('users.edit')->with('user', $user); 
+        $role = DB::table('roles')->select('id', 'name')->get();
+        return view('users.edit')->with('user', $user)->with('role', $role); 
     }
 
     public function update(Request $request, $id)

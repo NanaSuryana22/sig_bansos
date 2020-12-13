@@ -4,10 +4,14 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Sofa\Eloquence\Eloquence;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use Eloquence;
+
+    protected $searchableColumns = ['email'];
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password'
     ];
 
     /**
@@ -29,6 +33,10 @@ class User extends Authenticatable
 
     public function roles() {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function penduduk() {
+        return $this->belongsTo('App\Penduduk', 'user_id');
     }
 
     public function authorizeRoles($roles)
@@ -47,5 +55,15 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         return null !== $this->roles()->where('name', $role)->first();
+    }
+
+    public function kecamatans()
+    {
+        return $this->hasMany('App\Kecamatan', 'user_id');
+    }
+
+    public function desas()
+    {
+        return $this->hasMany('App\Desa', 'user_id');
     }
 }
