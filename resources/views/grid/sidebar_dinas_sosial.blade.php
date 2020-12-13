@@ -8,27 +8,10 @@ $auth = Auth::user()->name;
       <p class="centered"><a href="profile.html"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_the_Ministry_of_Social_Affairs_of_the_Republic_of_Indonesia.svg/1200px-Logo_of_the_Ministry_of_Social_Affairs_of_the_Republic_of_Indonesia.svg.png" class="img-circle" width="80"></a></p>
       <h5 class="centered"><?= $auth ?></h5>
       <li class="mt">
-        @if(Auth::user()->roles[0]->name == 'dinas_sosial')
-          <a href="{{ route('dinas_sosial') }}">
-            <i class="fa fa-home"></i>
-            <span>Halaman Utama</span>
-          </a>
-        @elseif(Auth::user()->roles[0]->name == 'kecamatan')
-          <a href="{{ route('kecamatan') }}">
-            <i class="fa fa-home"></i>
-            <span>Halaman Utama</span>
-          </a>
-        @elseif(Auth::user()->roles[0]->name == 'desa')
-          <a href="{{ route('desa') }}">
-            <i class="fa fa-home"></i>
-            <span>Halaman Utama</span>
-          </a>
-        @elseif(Auth::user()->roles[0]->name == 'masyarakat')
-          <a href="{{ route('masyarakat') }}">
-            <i class="fa fa-home"></i>
-            <span>Halaman Utama</span>
-          </a>
-        @endif
+        <a href="{{ route('dinas_sosial') }}">
+          <i class="fa fa-home"></i>
+          <span>Halaman Utama</span>
+        </a>
       </li>
       <li class="sub-menu">
         <a href="javascript:;">
@@ -65,6 +48,5 @@ $auth = Auth::user()->name;
         </a>
       </li>
     </ul>
-    <!-- sidebar menu end-->
   </div>
 </aside>

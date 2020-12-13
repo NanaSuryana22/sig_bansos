@@ -54,7 +54,15 @@
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
-    @include('grid.sidebar')
+    @if(Auth::user()->roles[0]->name == 'dinas_sosial')
+      @include('grid.sidebar_dinas_sosial')
+    @elseif(Auth::user()->roles[0]->name == 'kecamatan')
+      @include('grid.sidebar_kecamatan')
+    @elseif(Auth::user()->roles[0]->name == 'desa')
+      @include('grid.sidebar_desa')
+    @elseif(Auth::user()->roles[0]->name == 'masyarakat')
+      @include('grid.sidebar_masyarakat')
+    @endif
     <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
