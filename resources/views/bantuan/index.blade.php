@@ -41,10 +41,10 @@
                     <td class="numeric" data-title="Status">{{ ucfirst($b->status) }}</td>
                     <td class="numeric" data-title="Aksi">
                       <form action="{{ route('bantuan.destroy', $b->id) }}" method="post">
-                        {{--  <a class="btn btn-primary btn-xs"
+                         <a class="btn btn-primary btn-xs"
                           href="{{ route('bantuan.show',$b->id) }}" title="Lihat Detail">
                           <i class="fa fa-eye"></i>
-                        </a>  --}}
+                        </a>
                         <a class="btn btn-primary btn-xs"
                           href="{{ route('bantuan.edit',$b->id) }}" title="Ubah Data">
                           <i class="fa fa-pencil"></i>

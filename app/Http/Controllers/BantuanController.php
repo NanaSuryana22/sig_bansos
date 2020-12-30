@@ -8,6 +8,7 @@ use Auth;
 use DB;
 use Session;
 use App\Http\Requests\BantuanRequest;
+use App\Http\Requests\EditBantuanRequest;
 
 class BantuanController extends Controller
 {
@@ -27,7 +28,7 @@ class BantuanController extends Controller
      */
     public function index()
     {
-        $bantuan = Bantuan::paginate(10);
+        $bantuan = Bantuan::orderBy('created_at', 'desc')->paginate(10);
         return view('bantuan.index')->with('bantuan', $bantuan);
     }
 
@@ -49,7 +50,19 @@ class BantuanController extends Controller
      */
     public function store(BantuanRequest $request)
     {
-        Bantuan::create($request->all());
+        $image = $request->file('image');
+        $dp_image = 'photo/';
+        $image_name = str_random(6).'_'.$image->getClientOriginalName();
+        $image->move($dp_image, $image_name);
+
+        $bantuan = new Bantuan;
+        $bantuan->nama_bantuan = $request->nama_bantuan;
+        $bantuan->image = $dp_image . $image_name;
+        $bantuan->quota = $request->quota;
+        $bantuan->bantuan_berupa = $request->bantuan_berupa;
+        $bantuan->tanggal_dikeluarkan = $request->tanggal_dikeluarkan;
+        $bantuan->status = $request->status;
+        $bantuan->save();
 
         Session::flash("notice", "Bantuan Baru Berhasil Ditambahkan");
         return redirect()->route("bantuan.index");
@@ -84,9 +97,27 @@ class BantuanController extends Controller
      * @param  \App\Bantuan  $bantuan
      * @return \Illuminate\Http\Response
      */
-    public function update(BantuanRequest $request, $id)
+    public function update(EditBantuanRequest $request, $id)
     {
-        Bantuan::find($id)->update($request->all());
+        $b = Bantuan::find($id);
+        if (empty($request->file('image'))) {
+            $image_n = $b->image;
+        }
+        else {
+            $image = $request->file('image');
+            $dp_image = 'photo/';
+            $image_name = str_random(6).'_'.$image->getClientOriginalName();
+            $image->move($dp_image, $image_name);
+            $image_n = $dp_image . $image_name;
+        }
+
+        $b->nama_bantuan = $request->nama_bantuan;
+        $b->image = $image_n;
+        $b->quota = $request->quota;
+        $b->bantuan_berupa = $request->bantuan_berupa;
+        $b->tanggal_dikeluarkan = $request->tanggal_dikeluarkan;
+        $b->status = $request->status;
+        $b->save();
 
         Session::flash("notice", "Jenis Bantuan terpilih berhasil diupdate");
         return redirect()->route("bantuan.index");

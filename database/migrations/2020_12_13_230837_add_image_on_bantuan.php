@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddQuotaToPenyaluran extends Migration
+class AddImageOnBantuan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddQuotaToPenyaluran extends Migration
      */
     public function up()
     {
-        Schema::table('penyaluran', function($table) {
-            $table->integer('quota');
+        Schema::table('bantuan', function($table) {
+            $table->string('image');
         });
     }
 

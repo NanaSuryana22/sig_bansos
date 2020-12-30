@@ -25,7 +25,7 @@ class DesaRequest extends FormRequest
     {
         $id = $this->desa;
         return [
-            'kecamatan_id' => 'required|unique:desa,kecamatan_id',
+            'kecamatan_id' => 'required',
             'user_id' => 'required|unique:desa,user_id',
             'nama_desa' => 'required|min:3|max:50',
             'alamat' => 'required|min:5|max:255',
@@ -41,7 +41,6 @@ class DesaRequest extends FormRequest
             'user_id.required' => 'Tentukan User Untuk Dijadikan Petugas Desa',
             'user_id.unique' => 'User yang dipilih sudah ada',
             'kecamatan_id.required' => 'Kecamatan Wajib Dipilih',
-            'kecamatan_id.unique' => 'Kecamatan Yang dipilih sudah ada',
             'nama_desa.required' => 'Nama Desa Wajib Diisi',
             'nama_desa.min' => 'Nama Desa minimal 3 karakter',
             'nama.max' => 'Nama Desa maksimal 50 karakter',

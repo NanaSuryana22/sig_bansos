@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Penduduk extends Model
 {
     protected $fillable = [
-        'user_id', 'alamat', 'latitude', 'longitude', 'jenis_kelamin', 'keterangan'
+        'penyaluran_id', 'nik', 'nama', 'jenis_kelamin', 'tempat_tanggal_lahir', 'alamat',
+        'agama', 'status_pernikahan', 'pekerjaan'
     ];
 
-    public function user() {
-        return $this->hasOne('App\User', 'user_id');
+    public function penyaluran()
+    {
+        return $this->belongsTo('App\Penyaluran', 'penyaluran_id');
     }
 
-    protected $table = "penduduks";
+    protected $table = "penduduk";
 }

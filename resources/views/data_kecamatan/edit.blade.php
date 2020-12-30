@@ -16,6 +16,7 @@
               <label class="col-sm-2 col-sm-2 control-label" for="user_id">Pilih User</label>
               <div class="col-sm-10">
                 <select id="user_id" name="user_id" class="select_to form-control @error('user_id') is-invalid @enderror" value="{{ $kecamatan->user_id }}">
+                    <option value="{{ $kecamatan->user_id }}">-- Pilih User --</option>
                   @foreach($users as $u)
                     <option value="{{ $u->id }}">{{ $u->name }} ({{ $u->email }})</option>
                   @endforeach

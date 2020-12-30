@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Penyaluran;
 use App\Kecamatan;
+use App\Desa;
 use Auth;
 use App\User;
 use DB;
@@ -26,7 +28,11 @@ class DataKecamatanController extends Controller
 
     public function create()
     {
-        $users = User::all();
+        $users = DB::table('users')
+                    ->select('users.id','users.name', 'users.email')
+                    ->join('role_user','user_id','=','users.id')
+                    ->where(['role_id' => 2])
+                    ->get();
         return view('data_kecamatan.create')->with('users', $users);
     }
 
@@ -38,14 +44,21 @@ class DataKecamatanController extends Controller
         return redirect()->route("data_kecamatan.index");
     }
 
-    public function show(Kecamatan $kecamatan)
+    public function show($id)
     {
-        return view('data_kecamatan.show', compact('kecamatan'));
+        $kecamatan  = Kecamatan::find($id);
+        $penyaluran = Penyaluran::where('kecamatan_id', $id)->paginate(10);
+        $desa       = Desa::where('kecamatan_id', $id)->paginate(10);
+        return view('data_kecamatan.show')->with('kecamatan', $kecamatan)->with('desa', $desa)->with('penyaluran', $penyaluran);
     }
 
     public function edit($id)
     {
-        $users = User::all();
+        $users = DB::table('users')
+                    ->select('users.id','users.name', 'users.email')
+                    ->join('role_user','user_id','=','users.id')
+                    ->where(['role_id' => 2])
+                    ->get();
         $kecamatan = Kecamatan::find($id);
         return view('data_kecamatan.edit')->with('kecamatan', $kecamatan)->with('users', $users);
     }

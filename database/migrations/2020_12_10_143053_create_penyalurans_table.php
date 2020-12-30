@@ -18,11 +18,12 @@ class CreatePenyaluransTable extends Migration
             $table->integer('bantuan_id')->unsigned();
             $table->integer('kecamatan_id')->unsigned();
             $table->integer('desa_id')->unsigned();
-            $table->string('status_tracking_kecamatan');
-            $table->string('status_tracking_desa');
-            $table->string('keterangan_kemensos');
-            $table->string('keterangan_kecamatan');
-            $table->string('keterangan_desa');
+            $table->integer('quota');
+            $table->string('status_tracking_kecamatan')->nullable();
+            $table->string('status_tracking_desa')->nullable();
+            $table->string('keterangan_kemensos')->nullable();
+            $table->string('keterangan_kecamatan')->nullable();
+            $table->string('keterangan_desa')->nullable();
             $table->timestamps();
         });
     }

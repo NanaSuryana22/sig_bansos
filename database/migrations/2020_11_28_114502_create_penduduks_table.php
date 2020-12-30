@@ -13,14 +13,17 @@ class CreatePenduduksTable extends Migration
      */
     public function up()
     {
-        Schema::create('penduduks', function (Blueprint $table) {
+        Schema::create('penduduk', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->string('alamat');
-            $table->string('latitude');
-            $table->string('longitude');
+            $table->integer('penyaluran_id')->unsigned();
+            $table->string('nik');
+            $table->string('nama');
             $table->string('jenis_kelamin');
-            $table->string('keterangan');
+            $table->string('tempat_tanggal_lahir');
+            $table->text('alamat');
+            $table->string('agama');
+            $table->string('status_pernikahan');
+            $table->string('pekerjaan');
             $table->timestamps();
         });
     }

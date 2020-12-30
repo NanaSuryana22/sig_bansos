@@ -22,9 +22,8 @@
                   <th>Nama Kecamatan</th>
                   <th>Nama Desa</th>
                   <th>Alamat</th>
-                  <th class="numeric">Langitude</th>
-                  <th class="numeric">Longitude</th>
-                  <th class="numeric">Deskripsi</th>
+                  <th class="numeric">Titik Koordinat</th>
+                  {{--  <th class="numeric">Deskripsi</th>  --}}
                   <th class="numeric">Aksi</th>
                 </tr>
               </thead>
@@ -35,9 +34,8 @@
                     <td data-title="Nama Kecamatan">{{ $b->kecamatan->nama }}</td>
                     <td data-title="Nama Desa">{{ $b->nama_desa }}</td>
                     <td data-title="Alamat">{{ $b->alamat }}</td>
-                    <td class="numeric" data-title="Longitude">{{ $b->long }}</td>
-                    <td class="numeric" data-title="Langitude">{{ $b->lat }}</td>
-                    <td class="numeric" data-title="Deskripsi">{{ $b->deskripsi }}</td>
+                    <td class="numeric" data-title="Titik Koordinat">{{ $b->coordinate }}</td>
+                    {{--  <td class="numeric" data-title="Deskripsi">{{ $b->deskripsi }}</td>  --}}
                     <td class="numeric" data-title="Aksi">
                       <form action="{{ route('data_desa.destroy', $b->id) }}" method="post">
                         <a class="btn btn-primary btn-xs"

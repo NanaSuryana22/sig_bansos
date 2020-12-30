@@ -27,7 +27,6 @@ class RegisterRequest extends FormRequest
         return [
             'name' => 'required|string|max:50',
             'email' => 'required|string|email|max:50|unique:users',
-            'photo' => 'required|image|mimes:jpeg,png,jpg|min:5|max:7000',
             'password' => 'required|string|min:6|confirmed'
         ];
     }
@@ -43,11 +42,6 @@ class RegisterRequest extends FormRequest
             'email.email' => 'Format E-Mail harus benar',
             'email.max' => 'Email maksimal 50 karakter',
             'email.unique' => 'Email sudah digunakan',
-            'photo.required' => 'Wajib Upload Foto',
-            'photo.image' => 'File yang diupload harus berupa gambar',
-            'photo.mimes' => 'Format file yang didukung berupa jpeg, png, dan jpg',
-            'photo.min' => 'Ukuran Foto Minimal 5 Kilobyte',
-            'photo.max' => 'Ukuran Foto Maksimal 7 Megabyte',
             'password.required' => 'Password Wajib Diisi',
             'password.string' => 'Password harus berupa angka dan huruf',
             'password.min' => 'Password minimal 6 karakter',

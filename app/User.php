@@ -4,12 +4,10 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Sofa\Eloquence\Eloquence;
 
 class User extends Authenticatable
 {
     use Notifiable;
-    use Eloquence;
 
     protected $searchableColumns = ['email'];
 
@@ -33,10 +31,6 @@ class User extends Authenticatable
 
     public function roles() {
         return $this->belongsToMany(Role::class);
-    }
-
-    public function penduduk() {
-        return $this->belongsTo('App\Penduduk', 'user_id');
     }
 
     public function authorizeRoles($roles)
@@ -65,5 +59,10 @@ class User extends Authenticatable
     public function desas()
     {
         return $this->hasMany('App\Desa', 'user_id');
+    }
+
+    public function pelaporans()
+    {
+        return $this->hasMany('App\Pelaporan', 'user_id');
     }
 }

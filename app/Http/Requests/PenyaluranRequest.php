@@ -28,7 +28,7 @@ class PenyaluranRequest extends FormRequest
             'bantuan_id' => 'required',
             'kecamatan_id' => 'required',
             'desa_id' => 'required',
-            'quota' => 'required|numeric'
+            'quota' => 'required|numeric|min:1'
         ];
     }
 
@@ -39,7 +39,8 @@ class PenyaluranRequest extends FormRequest
             'kecamatan_id.required' => 'Kecamatan Wajib Dipilih',
             'desa_id.required' => 'Desa Wajib Dipilih',
             'quota.required' => 'Silahkan Isi Jumlah Bantuan Yang Akan Disalurkan',
-            'quota.numeric' => 'Isian Quota Harus Berupa Number'
+            'quota.numeric' => 'Isian Quota Harus Berupa Number',
+            'quota.min' => 'Jumlah Yang disalurkan tidak bisa kurang dari 1'
         ];
     }
 }

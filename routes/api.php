@@ -18,8 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['as' => 'api.', 'namespace' => 'Api'], function () {
-    /*
-     * Outlets Endpoints
-     */
     Route::get('penduduk', 'PendudukController@index')->name('penduduk.index');
+    Route::get('sebaranbansoskecamatan', 'SebaranBansosKecamatanController@index')->name('sebaranbansoskecamatan.index');
+    Route::get('sebaranbansosdesa', 'SebaranBansosDesaController@index')->name('sebaranbansosdesa.index');
 });

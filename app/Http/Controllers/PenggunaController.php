@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PenggunaRequest;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
@@ -26,18 +27,20 @@ class PenggunaController extends Controller
 
     public function create()
     {
-        return view('pengguna.create');
+        $role = DB::table('roles')->select('id', 'name')->get();
+        return view('pengguna.create')->with('role', $role);
     }
 
-    public function store(Request $request)
+    public function store(PenggunaRequest $request)
     {
 
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
-        $user->roles()->attach(Role::where('name', $request->role_name)->first());
         $user->save();
+        $role_user = Role::where('name', $request->role_name)->first();
+        $user->roles()->attach($role_user);
 
         Session::flash("notice", "Pengguna berhasil ditambahkan");
         return redirect()->route("pengguna.index");
@@ -59,9 +62,11 @@ class PenggunaController extends Controller
 
     public function update(Request $request, $id)
     {
+        $role_user = DB::table('role_user')->where('user_id', $id)->update(['role_id' => $request->role_id]);
+
         User::find($id)->update($request->all());
         Session::flash("notice", "Pengguna terpilih berhasil diubah");
-        return redirect()->route("pengguna.show", $id);
+        return redirect()->route("pengguna.index");
     }
 
     public function destroy($id)

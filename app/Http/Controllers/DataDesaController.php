@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Penyaluran;
 use App\Kecamatan;
 use Auth;
 use App\User;
@@ -38,7 +39,11 @@ class DataDesaController extends Controller
      */
     public function create()
     {
-        $users = User::all();
+        $users = DB::table('users')
+                    ->select('users.id','users.name', 'users.email')
+                    ->join('role_user','user_id','=','users.id')
+                    ->where(['role_id' => 3])
+                    ->get();
         $kecamatan = Kecamatan::all();
         return view('data_desa.create')->with('users', $users)->with('kecamatan', $kecamatan);
     }
@@ -66,7 +71,8 @@ class DataDesaController extends Controller
     public function show($id)
     {
         $desa = Desa::find($id);
-        return view('data_desa.show')->with('desa', $desa);
+        $penyaluran = Penyaluran::where('desa_id', $id)->paginate(10);
+        return view('data_desa.show')->with('desa', $desa)->with('penyaluran', $penyaluran);
     }
 
     /**
@@ -77,7 +83,11 @@ class DataDesaController extends Controller
      */
     public function edit($id)
     {
-        $users = User::all();
+        $users = DB::table('users')
+                    ->select('users.id','users.name', 'users.email')
+                    ->join('role_user','user_id','=','users.id')
+                    ->where(['role_id' => 3])
+                    ->get();
         $kecamatan = Kecamatan::all();
         $desa = Desa::find($id);
         return view('data_desa.edit')->with('desa', $desa)->with('kecamatan', $kecamatan)->with('users', $users);
