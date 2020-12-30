@@ -16,9 +16,9 @@
           <span>Tindak Lanjut</span>
         </a>
         <ul class="sub">
-          <li><a href="#">Penerimaan Bantuan Sosial</a></li>
-          <li><a href="#">Data Penerima BanSos</a></li>
-          <li><a href="#">Pelaporan Masyarakat</a></li>
+          <li><a href="{{ route('tindaklanjutbansosdesa.index') }}">Penerimaan Bantuan Sosial</a></li>
+          <li><a href="{{ route('penduduk.index') }}">Data Penerima BanSos</a></li>
+          <li><a href="{{ route('list_pelaporan_desa') }}">Pelaporan Masyarakat</a></li>
         </ul>
       </li>
       <li class="sub-menu">
@@ -27,8 +27,8 @@
           <span>Peta Sebaran BanSos</span>
         </a>
         <ul class="sub">
-          <li><a href="#">Tingkat Kecamatan</a></li>
-          <li><a href="#">Tingkat Desa</a></li>
+          <li><a href="{{ route('sebaran_bansos_kecamatan') }}">Tingkat Kecamatan</a></li>
+          <li><a href="{{ route('sebaran_bansos_desa') }}">Tingkat Desa</a></li>
         </ul>
       </li>
     </ul>

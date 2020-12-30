@@ -16,4 +16,10 @@ class DesaController extends Controller
     public function index() {
         return view('desa.index');
     }
+
+    public function getDesa($id)
+    {
+        $desa = Desa::where('kecamatan_id', $id)->pluck('nama_desa', 'id');
+        return response()->json($desa);
+    }
 }

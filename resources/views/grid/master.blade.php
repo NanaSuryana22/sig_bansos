@@ -120,6 +120,10 @@
       $('.select_to').select2();
     });
   </script>
+  <script src="{{ url('dashio/lib/fancybox/jquery.fancybox.js') }}"></script>
+  <script class="include" type="text/javascript" src="{{ url('dashio/lib/jquery.dcjqaccordion.2.7.js') }}"></script>
+  <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script>
+  <script src="{{ url('js/locateControl.js') }}"></script>
   <script src="http://maps.google.com/maps/api/js?key=AIzaSyAzWV0p7BB_KGyp-xPzV-WL7wJefjV9KQY&sensor=false&libraries=geometry&v=3.7"></script>
   <script src="{{ url('dashio/lib/google-maps/maplace.js') }}"></script>
   <script src="{{ url('dashio/lib/google-maps/data/points.js') }}"></script>
@@ -144,6 +148,12 @@
         $('#info').html(location.html);
       }
     }).Load();
+  </script>
+  <script type="text/javascript">
+    $(function() {
+      //    fancybox
+      jQuery(".fancybox").fancybox();
+    });
   </script>
 </body>
 

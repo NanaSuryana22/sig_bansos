@@ -19,6 +19,33 @@
   height: 125px;
 }
 
+.btn-bantuan {
+  margin: 0px 5px;
+}
+
+.gambar-laporan {
+  width: 500px;
+  height: 900px;
+  border: 3px solid grey;
+  align-items: center;
+}
+.jarak-laporan {  
+  margin-left: 20px;
+}
+.jarak-keterangan-status-penyaluran {
+  padding-left: 18px;
+}
+.jarak-keterangan-status {
+  padding-left: 18px;
+}
+.btn-kembali-data-penduduk {
+  margin-bottom: 15px;
+  margin-right: 20px;
+  height: 15px;
+}
+.btn-table-data-penduduk {
+  margin-bottom: 15px;
+}
 /* body,
 html {
   height: 100%;

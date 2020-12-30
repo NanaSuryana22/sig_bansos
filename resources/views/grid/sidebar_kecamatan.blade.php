@@ -16,7 +16,7 @@
           <span>Tindak Lanjut</span>
         </a>
         <ul class="sub">
-          <li><a href="#">Penyaluran BanSos</a></li>
+          <li><a href="{{ route('tindaklanjutbansoskecamatan.index') }}">Penyaluran BanSos</a></li>
           <li><a href="#">Pelaporan Masyarakat</a></li>
         </ul>
       </li>
@@ -26,8 +26,8 @@
           <span>Peta Sebaran BanSos</span>
         </a>
         <ul class="sub">
-          <li><a href="#">Tingkat Kecamatan</a></li>
-          <li><a href="#">Tingkat Desa</a></li>
+          <li><a href="{{ route('sebaran_bansos_kecamatan') }}">Tingkat Kecamatan</a></li>
+          <li><a href="{{ route('sebaran_bansos_desa') }}">Tingkat Desa</a></li>
         </ul>
       </li>
     </ul>

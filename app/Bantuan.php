@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bantuan extends Model
 {
     protected $fillable = [
-        'nama_bantuan', 'quota', 'bantuan_berupa', 'tanggal_dikeluarkan', 'status'
+        'nama_bantuan', 'image', 'quota', 'bantuan_berupa', 'tanggal_dikeluarkan', 'status'
     ];
 
     public function penyaluran()

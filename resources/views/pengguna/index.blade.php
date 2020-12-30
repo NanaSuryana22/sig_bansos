@@ -11,7 +11,7 @@
       </div>
       <div class="col-lg-12">
         <div class="content-panel">
-          {{-- <a href="{{ route('pengguna.create') }}" class="btn btn-sm btn-info btn-jarak">Tambah Pengguna Baru</a> --}}
+          <a href="{{ route('pengguna.create') }}" class="btn btn-sm btn-info btn-jarak">Tambah Pengguna Baru</a>
           <hr />
           <h4><i class="fa fa-angle-right"></i> Tabel Data Pengguna</h4>
           <section id="no-more-tables">
@@ -36,19 +36,15 @@
                     <td data-title="Hak Akses">{{ucfirst(trans("$role->name"))}}</td>
                     <td data-title="Tanggal Bergabung">{{ Carbon\Carbon::parse($b->created_at)->format('d-m-Y') }}</td>
                     <td class="numeric" data-title="Aksi">
-                      <form action="{{ route('user.destroy', $b->id) }}" method="post">
+                      <form action="{{ route('pengguna.destroy', $b->id) }}" method="post">
                         <a class="btn btn-primary btn-xs"
-                          href="{{ route('user.show',$b->id) }}" title="Lihat Detail">
-                          <i class="fa fa-eye"></i>
-                        </a>
-                        <a class="btn btn-primary btn-xs"
-                          href="{{ route('user.edit',$b->id) }}" title="Ubah Data">
+                          href="{{ route('pengguna.edit',$b->id) }}" title="Ubah Data">
                           <i class="fa fa-pencil"></i>
                         </a>
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <button class="btn btn-danger btn-xs" type="submit"
-                          onclick="return confirm('Yakin ingin menghapus Data Kecamatan Ini ?')">
+                          onclick="return confirm('Yakin ingin menghapus Data Pengguna Ini ?')">
                           <i class="fa fa-trash" title="Hapus Data"></i>
                         </button>
                       </form>

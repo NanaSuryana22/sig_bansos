@@ -13,8 +13,8 @@
             method="post">
             {{ csrf_field() }}
             <div class="form-group">
-              <label class="col-sm-2 col-sm-2 control-label" for="user_id">Pilih User</label>
-              <div class="col-sm-10">
+              <label class="col-sm-12" for="user_id">Pilih User</label>
+              <div class="col-sm-12">
                 <select id="user_id" name="user_id" class="select_to form-control @error('user_id') is-invalid @enderror">
                   @foreach($users as $u)
                     <option value="{{ $u->id }}">{{ $u->name }} ({{ $u->email }})</option>
@@ -28,8 +28,8 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 col-sm-2 control-label" for="nama">Nama Kecamatan</label>
-              <div class="col-sm-10">
+              <label class="col-sm-12" for="nama">Nama Kecamatan</label>
+              <div class="col-sm-12">
                 <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama">
                 @if($errors->has('nama'))
                   <span class="invalid-feedback" role="alert">
@@ -39,8 +39,8 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 col-sm-2 control-label" for="longitude">Longitude</label>
-              <div class="col-sm-10">
+              <label class="col-sm-12" for="longitude">Longitude</label>
+              <div class="col-sm-12">
                 <input id="longitude" type="text" class="form-control @error('long') is-invalid @enderror" name="long" value="{{ old('long', request('long')) }}" required>
                 @if($errors->has('long'))
                   <span class="invalid-feedback" role="alert">
@@ -50,8 +50,8 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 col-sm-2 control-label" for="latitude">Latitude</label>
-              <div class="col-sm-10">
+              <label class="col-sm-12" for="latitude">Latitude</label>
+              <div class="col-sm-12">
                 <input id="latitude" type="text" class="form-control @error('lat') is-invalid @enderror" name="lat" value="{{ old('lat', request('lat')) }}" required>
                 @if($errors->has('lat'))
                   <span class="invalid-feedback" role="alert">
@@ -63,7 +63,7 @@
             <div class="form-group">
               <div class="col-sm-6">
                 <button type="submit" class="btn btn-sm btn-primary btn-jarak pull-left">Simpan</button>
-                <button type="reset" class="btn btn-sm btn-danger btn-jarak right">Bersihkan</button>
+                <button type="reset" class="btn btn-sm btn-danger btn-jarak">Bersihkan</button>
               </div>
             </div>
           </form>

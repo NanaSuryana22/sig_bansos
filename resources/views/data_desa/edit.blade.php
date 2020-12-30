@@ -15,7 +15,8 @@
             <div class="form-group">
               <label class="col-sm-12" for="user_id">Pilih User</label>
               <div class="col-sm-12">
-                <select id="user_id" name="user_id"  class="select_to form-control @error('user_id') is-invalid @enderror" value="{{ $desa->user_id }}">
+                <select id="user_id" name="user_id"  class="select_to form-control @error('user_id') is-invalid @enderror">
+                    <option value="{{ $desa->user_id }}">-- Pilih User --</option>
                   @foreach($users as $u)
                     <option value="{{ $u->id}}">{{ $u->name }} ({{ $u->email }})</option>
                   @endforeach
@@ -31,6 +32,7 @@
               <label class="col-sm-12" for="kecamatan_id">Pilih Kecamatan</label>
               <div class="col-sm-12">
                 <select id="kecamatan_id" name="kecamatan_id"  class="select_to form-control @error('kecamatan_id') is-invalid @enderror" value="{{ $desa->kecamatan_id }}">
+                  <option value="{{ $desa->kecamatan_id }}">-- Pilih Kecamatan --</option>
                   @foreach($kecamatan as $k)
                     <option value="{{ $k->id}}">{{ $k->nama }}</option>
                   @endforeach
