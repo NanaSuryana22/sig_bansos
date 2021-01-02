@@ -21,4 +21,5 @@ Route::group(['as' => 'api.', 'namespace' => 'Api'], function () {
     Route::get('penduduk', 'PendudukController@index')->name('penduduk.index');
     Route::get('sebaranbansoskecamatan', 'SebaranBansosKecamatanController@index')->name('sebaranbansoskecamatan.index');
     Route::get('sebaranbansosdesa', 'SebaranBansosDesaController@index')->name('sebaranbansosdesa.index');
+    Route::get('petasebaranlaporan', 'SebaranLaporanController@index')->name('petasebaranlaporan.index');
 });

@@ -18,7 +18,7 @@
         <ul class="sub">
           <li><a href="{{ route('tindaklanjutbansosdesa.index') }}">Penerimaan Bantuan Sosial</a></li>
           <li><a href="{{ route('penduduk.index') }}">Data Penerima BanSos</a></li>
-          <li><a href="{{ route('list_pelaporan_desa') }}">Pelaporan Masyarakat</a></li>
+          <li><a href="{{ route('laporan_tingkat_desa.index') }}">Pelaporan Masyarakat</a></li>
         </ul>
       </li>
       <li class="sub-menu">

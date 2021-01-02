@@ -5,7 +5,7 @@
   <section class="wrapper">
     <h3><i class="fa fa-angle-right"></i>Form Pembuatan Laporan</h3>
     <div class="row mt">
-      <div class="col-md-5">
+      <div class="col-md-6">
         <div class="form-panel">
           <h4 class="mb"><i class="fa fa-angle-right"></i>Tentukan Lokasi Kejadian</h4>
           <section class="panel">
@@ -15,7 +15,7 @@
           </section>
         </div>
       </div>
-      <div class="col-md-7">
+      <div class="col-md-6">
         <div class="form-panel">
           <h4 class="mb"><i class="fa fa-angle-right"></i>Silahkan Isi Form Berikut</h4>
           <form class="form-horizontal style-form" action="{{ route('pelaporan.store') }}" enctype="multipart/form-data"
@@ -68,6 +68,17 @@
                 @if($errors->has('alamat'))
                   <span class="invalid-feedback" role="alert">
                     <strong>{{$errors->first('alamat') }}</strong>
+                  </span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-12" for="phone_number">Nomor Handphone Yang Dapat Dihubungi</label>
+              <div class="col-sm-12">
+                <input type="tel" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number" pattern="[0-9]{12}" required oninvalid="this.setCustomValidity('Harap isi nomor telp. dengan benar')" oninput="setCustomValidity('')">
+                @if($errors->has('phone_number'))
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{$errors->first('phone_number') }}</strong>
                   </span>
                 @endif
               </div>
@@ -156,7 +167,7 @@
     crossorigin=""/>
 
 <style>
-    #mapid { height: 300px; }
+    #mapid { height: 400px; }
 </style>
 @endsection
 

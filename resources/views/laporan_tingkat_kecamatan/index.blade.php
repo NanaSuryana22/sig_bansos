@@ -19,11 +19,11 @@
         <div class="panel-body">
           <div class="tab-content">
             <div id="via-maps" class="tab-pane active">
-              @include('pelaporan.via_maps')
+              @include('laporan_tingkat_kecamatan.via_maps')
             </div>
             <!-- /tab-pane -->
             <div id="via-table" class="tab-pane">
-              @include('pelaporan.via_table')
+              @include('laporan_tingkat_kecamatan.via_table')
             </div>
             <!-- /tab-pane -->
           </div>
