@@ -17,7 +17,7 @@
         </a>
         <ul class="sub">
           <li><a href="{{ route('tindaklanjutbansoskecamatan.index') }}">Penyaluran BanSos</a></li>
-          <li><a href="#">Pelaporan Masyarakat</a></li>
+          <li><a href="{{ route('laporan_tingkat_kecamatan.index') }}">Pelaporan Masyarakat</a></li>
         </ul>
       </li>
       <li class="sub-menu">

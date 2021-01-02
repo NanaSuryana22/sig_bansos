@@ -35,16 +35,18 @@ Route::group(['middleware' => ['auth', 'role:dinas_sosial']], function () {
     Route::get('/desa_list/{kecamatan_id}', 'DinassosialController@desa_list');
     Route::get('/getQuota/{bantuan_id}', 'PenyaluranController@getQuota');
     Route::get('/data_penduduk/{penyaluran_id}', 'PenyaluranController@data_penduduk')->name('penyaluran.data_penduduk');
+    Route::resource('laporan_tingkat_kemensos', 'LaporanTingkatKemensosController');
 });
 
 Route::group(['middleware' => ['auth', 'role:kecamatan']], function () {
     Route::get('kecamatan', 'KecamatanController@index')->name('kecamatan');
+    Route::resource('laporan_tingkat_kecamatan', 'LaporanTingkatKecamatanController');
     Route::resource('tindaklanjutbansoskecamatan', 'TindakLanjutBansosKecamatanController');
 });
 
 Route::group(['middleware' => ['auth', 'role:desa']], function () {
     Route::get('desa', 'DesaController@index')->name('desa');
-    Route::get('/list_pelaporan_desa', 'TindakLanjutPelaporanController@list_pelaporan_desa')->name('list_pelaporan_desa');
+    Route::resource('laporan_tingkat_desa', 'TindakLanjutPelaporanController');
     Route::get('show/{id}', 'PelaporanController@show')->name('pelaporan_desa.show');
     Route::resource('tindaklanjutbansosdesa', 'TindakLanjutBansosDesaController');
     Route::resource('penduduk', 'PendudukController');

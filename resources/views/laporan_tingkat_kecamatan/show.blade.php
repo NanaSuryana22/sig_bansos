@@ -128,22 +128,15 @@
                   </div>
                 </div>
               </div>
-              <br />
-              <form action="{{ route('pelaporan.destroy', $pelaporan->id) }}" method="post">
-                @if ($pelaporan->status_desa == 'Dalam Proses Verifikasi' && $pelaporan->user_id == Auth::user()->id)
-                  <a href="{{ route('pelaporan.edit',$pelaporan->id) }}" class="pull-left btn btn-warning btn-md">
-                    <i class="fa fa-pencil" title="Ubah Data"></i>
-                  </a>
-                  {{ csrf_field() }}
-                  {{ method_field('DELETE') }}
-                  <button type="submit" class="pull-left btn btn-danger btn-md btn-bantuan" onclick="return confirm('Yakin ingin menghapus Laporan Ini ?')">
-                    <i class="fa fa-trash" title="Hapus Data"></i>
-                  </button>
-                @endif
-                <a href="{{ route('pelaporan.index')  }}" class="pull-right btn btn-primary btn-md">
-                  <i class="fa fa-mail-reply" title="Kembali"></i>
-                </a>
-              </form>
+              @if ($pelaporan->status_desa == 'Diteruskan Ke Tingkat Kecamatan' && $pelaporan->status_kecamatan == NULL && $pelaporan->kecamatan_id == $kecamatan_user[0])
+                <button class="btn btn-warning btn-md" title="Tindak Lanjut Laporan Ini ?" data-toggle="modal" data-target="#approval_kecamatan">
+                  <i class="fa fa-check"></i>
+                </button>
+                @include('laporan_tingkat_kecamatan.approval_kecamatan')
+              @endif
+              <a href="{{ route('laporan_tingkat_kecamatan.index')  }}" class="pull-right btn btn-primary btn-md">
+                <i class="fa fa-mail-reply" title="Kembali"></i>
+              </a>
               <!-- /row -->
             </div>
             <!-- /tab-pane -->

@@ -60,6 +60,7 @@ class PelaporanController extends Controller
         $pelaporan->kecamatan_id = $request->kecamatan_id;
         $pelaporan->desa_id = $request->desa_id;
         $pelaporan->alamat = $request->alamat;
+        $pelaporan->phone_number = $request->phone_number;
         $pelaporan->long = $request->long;
         $pelaporan->lat = $request->lat;
         if ($request->hasFile('image_1')) {
@@ -72,11 +73,11 @@ class PelaporanController extends Controller
             $pelaporan->image_3 = $dp_image_3 . $image_3_name;
         }
         $pelaporan->desciption = $request->desciption;
-        $pelaporan->status = 'Dalam Proses Verifikasi';
+        $pelaporan->status_desa = 'Dalam Proses Verifikasi';
         $pelaporan->save();
 
         Session::flash("notice", "Laporan anda berhasil disimpan.");
-        return redirect()->route("pelaporan.index");
+        return redirect()->route("pelaporan.show", $pelaporan->id);
     }
 
     public function show($id)
@@ -131,6 +132,7 @@ class PelaporanController extends Controller
         $pelaporan->kecamatan_id = $request->kecamatan_id;
         $pelaporan->desa_id = $request->desa_id;
         $pelaporan->alamat = $request->alamat;
+        $pelaporan->phone_number = $request->phone_number;
         $pelaporan->long = $request->long;
         $pelaporan->lat = $request->lat;
         $pelaporan->image_1 = $image_1_n;
@@ -140,7 +142,7 @@ class PelaporanController extends Controller
         $pelaporan->save();
 
         Session::flash("notice", "Laporan anda berhasil diubah.");
-        return redirect()->route("pelaporan.index");
+        return redirect()->route("pelaporan.show", $pelaporan->id);
     }
 
     public function destroy($id)

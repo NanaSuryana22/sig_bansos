@@ -42,7 +42,7 @@ $auth = Auth::user()->name;
         </ul>
       </li>
       <li class="sub-menu">
-        <a href="#">
+        <a href="{{ route('laporan_tingkat_kemensos.index') }}">
           <i class="fa fa-book"></i>
           <span>Pelaporan Masyarakat</span>
         </a>

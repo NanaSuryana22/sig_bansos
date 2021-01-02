@@ -73,6 +73,17 @@
               </div>
             </div>
             <div class="form-group">
+              <label class="col-sm-12" for="phone_number">Nomor Handphone Yang Dapat Dihubungi</label>
+              <div class="col-sm-12">
+                <input type="tel" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number" value="{{ $pelaporan->phone_number }}" pattern="[0-9]{12}" required oninvalid="this.setCustomValidity('Harap isi nomor telp. dengan benar')" oninput="setCustomValidity('')">
+                @if($errors->has('phone_number'))
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{$errors->first('phone_number') }}</strong>
+                  </span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group">
               <label class="col-sm-12" for="image_1">Upload Gambar 1</label>
               <div class="col-sm-12">
                 <input type="file" class="form-control @error('image_1') is-invalid @enderror" value="{!! $pelaporan->image_1 !!}" name="image_1" id="image_1">
@@ -170,7 +181,7 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/penyaluran.js') }}" type="text/javascript">
+<script src="{{ url('js/get_desa.js') }}" type="text/javascript">
 <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
     integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
     crossorigin=""></script>
