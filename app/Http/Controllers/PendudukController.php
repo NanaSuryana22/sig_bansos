@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Penduduk;
 use App\Penyaluran;
+use App\Desa;
+use Auth;
 use App\Imports\PendudukImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use Session;
 use App\Http\Requests\PendudukRequest;
+use App\Exports\PendudukExport;
+use App\Http\Controllers\Controller;
 
 class PendudukController extends Controller
 {
@@ -90,9 +94,10 @@ class PendudukController extends Controller
      */
     public function show($id)
     {
-        $penduduk = Penduduk::where('penyaluran_id', $id)->paginate(10);
+        $penduduk   = Penduduk::where('penyaluran_id', $id)->paginate(10);
         $penyaluran = Penyaluran::find($id);
-        return view('penduduk.show')->with('penduduk', $penduduk)->with('penyaluran', $penyaluran);
+        $desa_id    = Desa::where('user_id', Auth::user()->id)->pluck('id');
+        return view('penduduk.show')->with('penduduk', $penduduk)->with('penyaluran', $penyaluran)->with('desa_id', $desa_id);
     }
 
     /**

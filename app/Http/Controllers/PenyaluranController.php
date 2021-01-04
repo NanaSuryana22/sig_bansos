@@ -88,16 +88,16 @@ class PenyaluranController extends Controller
     public function data_penduduk($penyaluran_id)
     {
         $penduduk = Penduduk::where('penyaluran_id', $penyaluran_id)->paginate(10);
-        return view('penyaluran.data_penduduk')->with('penduduk', $penduduk);
+        $penyaluran = Penyaluran::find($penyaluran_id);
+        return view('penyaluran.data_penduduk')->with('penduduk', $penduduk)->with('penyaluran', $penyaluran);
     }
 
     public function edit($id)
     {
-        $bantuan    = Bantuan::all()->where('status', 'aktif');
+        $bantuan    = Bantuan::all()->where('status', 'Aktif');
         $kecamatan  = Kecamatan::all();
         $desa       = Desa::all();
         $penyaluran = Penyaluran::find($id);
-
         return view('penyaluran.edit')->with('penyaluran', $penyaluran)->with('bantuan', $bantuan)->with('kecamatan', $kecamatan)->with('desa', $desa);
     }
 

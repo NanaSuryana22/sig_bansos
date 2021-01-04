@@ -50,8 +50,8 @@
             <div class="form-group">
               <label class="col-sm-12" for="bantuan_berupa">Bantuan Berupa</label>
               <div class="col-sm-12">
-                <select class="form-control @error('bantuan_berupa') is-invalid @enderror" name="bantuan_berupa" id="bantuan_berupa">
-                  <option value="{{ $bantuan->bantuan_berupa }}"></option>
+                <select class="form-control @error('bantuan_berupa') is-invalid @enderror" name="bantuan_berupa" id="bantuan_berupa" required>
+                  <option value="{{ $bantuan->bantuan_berupa }}">--Pilih Jenis Bantuan--</option>
                   <option value="Tunai">Tunai</option>
                   <option value="Non Tunai">Non Tunai</option>
                   <option value="Lainnya">Lainnya</option>
@@ -77,8 +77,8 @@
             <div class="form-group">
               <label class="col-sm-12" for="status">Status</label>
               <div class="col-sm-12">
-                <select class="form-control @error('status') is-invalid @enderror" name="status" id="status" value="{!! $bantuan->status !!}">
-                  <option value="{{ $bantuan->status }}"></option>
+                <select class="form-control @error('status') is-invalid @enderror" name="status" id="status" value="{!! $bantuan->status !!}" required>
+                  <option value="{{ $bantuan->status }}">--Pilih Status--</option>
                   <option value="Aktif">Aktif</option>
                   <option value="Tidak Aktif">Tidak Aktif</option>
                 </select>

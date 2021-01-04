@@ -77,12 +77,8 @@
               </div>
               <!-- /row -->
               <br />
-              @if (isset($penduduk))
+              @if(Auth::user()->roles[0]->name == 'dinas_sosial' || Auth::user()->roles[0]->name == 'kecamatan' || Auth::user()->roles[0]->name == 'desa')
                 <a href="{{ route('warga_penerima_bansos',$penyaluran->id) }}" class="pull-left btn btn-warning btn-md">
-                  <i class="fa fa-table" title="Lihat Data Warga Penerima Bantuan Ini ?"></i>
-                </a>
-              @else
-                <a href="#" class="pull-left btn btn-warning btn-md" onclick="return confirm('Data Warga Penerima Bantuan Sosial Belum Tersedia')">
                   <i class="fa fa-table" title="Lihat Data Warga Penerima Bantuan Ini ?"></i>
                 </a>
               @endif
