@@ -24,7 +24,8 @@ class TindakLanjutBansosDesaController extends Controller
 
     public function show($id) {
         $penyaluran = Penyaluran::find($id);
-        return view('tindaklanjutdesa.show')->with('penyaluran', $penyaluran);
+        $desa_id    = Desa::where('user_id', Auth::user()->id)->pluck('id');
+        return view('tindaklanjutdesa.show')->with('penyaluran', $penyaluran)->with('desa_id', $desa_id);
     }
 
     public function update(Request $request, $id) {
@@ -33,6 +34,7 @@ class TindakLanjutBansosDesaController extends Controller
         $penyaluran->keterangan_desa = $request->keterangan_desa;
         $penyaluran->save();
 
-        return redirect()->route("tindaklanjutbansosdesa.show", $id);
+        Session::flash("notice", "Status Penyaluran Berhasil Diperbaharui, Silahkan import data penduduk penerima bantuan sosial.");
+        return redirect()->route("penduduk.show", $id);
     }
 }

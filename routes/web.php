@@ -24,6 +24,7 @@ Route::get('/sebaran_bansos_kecamatan/{id}', 'PetaSebaranBansosKecamatanControll
 Route::get('/sebaran_bansos_desa', 'PetaSebaranBansosDesaController@index')->name('sebaran_bansos_desa');
 Route::get('/sebaran_bansos_desa/{id}', 'PetaSebaranBansosDesaController@show')->name('sebaran_bansos_desa.show');
 Route::get('data_penerima_bansos/{penyaluran_id}', 'DataWargaPenerimaBanSosController@data_penerima_bansos')->name('warga_penerima_bansos');
+Route::get('penduduk/export/{id}', 'PendudukExportController@export');
 
 Route::group(['middleware' => ['auth', 'role:dinas_sosial']], function () {
     Route::get('dinas_sosial', 'DinassosialController@index')->name('dinas_sosial');

@@ -26,7 +26,8 @@ class TindakLanjutBansosKecamatanController extends Controller
     public function show($id) {
         $penyaluran = Penyaluran::find($id);
         $penduduk   = Penduduk::where('penyaluran_id', $id);
-        return view('tindaklanjutkecamatan.show')->with('penyaluran', $penyaluran)->with('penduduk', $penduduk);
+        $kec_id     = Kecamatan::where('user_id', Auth::user()->id)->pluck('id');
+        return view('tindaklanjutkecamatan.show')->with('penyaluran', $penyaluran)->with('penduduk', $penduduk)->with('kec_id', $kec_id);
     }
 
     public function update(Request $request, $id) {
@@ -35,6 +36,7 @@ class TindakLanjutBansosKecamatanController extends Controller
         $penyaluran->keterangan_kecamatan = $request->keterangan_kecamatan;
         $penyaluran->save();
 
+        Session::flash("notice", "Status Penyaluran Berhasil Diperbaharui.");
         return redirect()->route("tindaklanjutbansoskecamatan.show", $id);
     }
 }

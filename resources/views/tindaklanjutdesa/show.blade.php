@@ -4,6 +4,9 @@
 <section id="main-content">
   <section class="wrapper site-min-height">
     <div class="row mt">
+      <div class="col-lg-12">
+        @include('grid.notice')
+      </div>
       <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="showback">
           <h4><i class="fa fa-map-marker"></i> Peta Tujuan Kecamatan</h4>
@@ -66,6 +69,7 @@
                 </div>
                 <!-- /col-md-6 -->
                 <div class="col-md-12 jarak-laporan">
+                  <br />
                   <div class="row">
                     <dl class="row">
                       <dt class="col-sm-4">Keterangan Dari Dinas Sosial</dt>
@@ -73,23 +77,30 @@
                       <div class="col-md-12">
                         <hr />
                       </div>
-                      <dt class="col-sm-4">Keterangan Dari Petugas Kecamatan</dt>
-                      <dd class="col-sm-8">{{ ucfirst($penyaluran->keterangan_kecamatan) }}</dd>
-                      <div class="col-md-12">
-                        <hr />
-                      </div>
-                      <dt class="col-sm-4">Keterangan Dari Petugas Desa</dt>
-                      <dd class="col-sm-8">{{ ucfirst($penyaluran->keterangan_desa) }}</dd>
-                      <div class="col-md-12">
-                        <hr />
-                      </div>
+                      @isset($penyaluran->keterangan_kecamatan)
+                        <dt class="col-sm-4">Keterangan Dari Petugas Kecamatan</dt>
+                        <dd class="col-sm-8">{{ ucfirst($penyaluran->keterangan_kecamatan) }}</dd>
+                        <div class="col-md-12">
+                          <hr />
+                        </div>
+                      @endisset
+                      @isset($penyaluran->keterangan_desa)
+                        <dt class="col-sm-4">Keterangan Dari Petugas Desa</dt>
+                        <dd class="col-sm-8">{{ ucfirst($penyaluran->keterangan_desa) }}</dd>
+                        <div class="col-md-12">
+                          <hr />
+                        </div>
+                      @endisset
                     </dl>
                   </div>
                 </div>
               </div>
               <br />
-              @if($penyaluran->status_tracking_desa == 'Dalam Proses' && $penyaluran->status_tracking_kecamatan == 'Diterima')
-                <button class="btn btn-primary btn-md" title="Ubah Data" data-toggle="modal" data-target="#ubah_data">
+              <a href="{{ route('penduduk.show',$penyaluran->id) }}" class="btn-show-list-penduduk pull-left btn btn-success btn-md">
+                <i class="fa fa-table" title="Lihat Data Warga Penerima Bantuan Ini ?"></i>
+              </a>
+              @if($penyaluran->status_tracking_desa == 'Dalam Proses' && $penyaluran->status_tracking_kecamatan == 'Diterima' && $penyaluran->desa_id == $desa_id[0])
+                <button class="btn btn-warning btn-md" title="Verifikasi Penyaluran Ini ?" data-toggle="modal" data-target="#ubah_data">
                   <i class="fa fa-check"></i>
                 </button>
                 @include('tindaklanjutdesa.form_tindak_lanjut')

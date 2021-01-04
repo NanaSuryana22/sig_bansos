@@ -13,7 +13,7 @@
       <div class="col-lg-12">
         <div class="content-panel">
           <div class="btn-kembali-data-penduduk">
-            <a href="#" class="pull-left btn btn-primary btn-sm btn-jarak">
+            <a href="{{url('penduduk/export', $penyaluran->id)}}" class="pull-left btn btn-primary btn-sm btn-jarak">
               <i class="fa fa-download" title="Download Excel"></i>
             </a>
             <a href="{{ url()->previous() }}" class="pull-right btn btn-primary btn-sm">

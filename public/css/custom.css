@@ -46,6 +46,15 @@
 .btn-table-data-penduduk {
   margin-bottom: 15px;
 }
+
+.btn-show-list-penduduk {
+  margin-right: 5px;
+}
+
+.btn-import-export-excel {
+  margin-left: 5px;
+  margin-right: 5px;
+}
 /* body,
 html {
   height: 100%;

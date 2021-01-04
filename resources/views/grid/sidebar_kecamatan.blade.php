@@ -5,7 +5,7 @@
       <p class="centered"><a href="profile.html"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_the_Ministry_of_Social_Affairs_of_the_Republic_of_Indonesia.svg/1200px-Logo_of_the_Ministry_of_Social_Affairs_of_the_Republic_of_Indonesia.svg.png" class="img-circle" width="80"></a></p>
       <h5 class="centered"><?= Auth::user()->name; ?></h5>
       <li class="mt">
-        <a href="{{ route('masyarakat') }}">
+        <a href="{{ route('kecamatan') }}">
           <i class="fa fa-home"></i>
           <span>Halaman Utama</span>
         </a>
