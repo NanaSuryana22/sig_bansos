@@ -11,13 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('home', 'MainController@index')->name('index');
+Route::get('/', 'MainController@index')->name('index');
 Route::resource('user', 'UserController');
 Route::get('/sebaran_bansos_kecamatan', 'PetaSebaranBansosKecamatanController@index')->name('sebaran_bansos_kecamatan');
 Route::get('/sebaran_bansos_kecamatan/{id}', 'PetaSebaranBansosKecamatanController@show')->name('sebaran_bansos_kecamatan.show');
